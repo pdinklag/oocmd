@@ -34,7 +34,7 @@ public:
     }
 
     inline std::string value_type_str() const override { return "non-negative SI/IEC integer"; }
-    inline std::string default_value_str() const override { return make_si_iec_string(*ref_); }
+    inline std::string default_value_str() const override { return make_si_iec_string(default_value_); }
 };
 
 }

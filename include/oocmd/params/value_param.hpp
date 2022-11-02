@@ -1,11 +1,13 @@
 #ifndef _OOCMD_VALUE_PARAM_HPP
 #define _OOCMD_VALUE_PARAM_HPP
 
+#include <concepts>
+
 #include <oocmd/config_param.hpp>
 
 namespace oocmd {
 
-template<typename T>
+template<std::semiregular T>
 class ValueParam : public ConfigParam {
 protected:
     template<typename Parser>
@@ -28,12 +30,14 @@ protected:
     }
 
     T* ref_;
+    T  default_value_;
 
 public:
     inline ValueParam() : ref_(nullptr) {
     }
 
     inline ValueParam(const char short_name, std::string&& name, T& ref, std::string&& desc) : ConfigParam(short_name, std::move(name), std::move(desc)), ref_(&ref) {
+        default_value_ = ref;
     }
 
     ValueParam(ValueParam const&) = delete;

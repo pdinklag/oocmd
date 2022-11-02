@@ -27,7 +27,7 @@ public:
     inline void read_config(nlohmann::json& dst) const override { dst[name_] = *ref_; }
     inline bool is_flag() const override { return true; }
     inline std::string value_type_str() const override { return "flag"; }
-    inline std::string default_value_str() const override { return *ref_ ? "on" : "off"; }
+    inline std::string default_value_str() const override { return default_value_ ? "on" : "off"; }
 };
 
 }

@@ -12,7 +12,7 @@ public:
     inline bool configure(nlohmann::json const& json) const override { return ValueParam::configure_number(json, name_, ref_, [](std::string const& s){ return std::stoi(s); }); }
     inline void read_config(nlohmann::json& dst) const override { dst[name_] = *ref_; }
     inline std::string value_type_str() const override { return "integer"; }
-    inline std::string default_value_str() const override { return std::to_string(*ref_); }
+    inline std::string default_value_str() const override { return std::to_string(default_value_); }
 };
 
 }

@@ -45,7 +45,7 @@ public:
     inline bool is_list() const override { return true; }
     inline void read_config(nlohmann::json& dst) const override { dst[name_] = *ref_; }
     inline std::string value_type_str() const override { return "array of strings"; }
-    inline std::string default_value_str() const override { return ref_->empty() ? "none" : ("[" + std::to_string(ref_->size()) + "]"); }
+    inline std::string default_value_str() const override { return default_value_.empty() ? "none" : ("[" + std::to_string(default_value_.size()) + "]"); }
 };
 
 }

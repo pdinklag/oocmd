@@ -24,7 +24,7 @@ public:
 
     inline void read_config(nlohmann::json& dst) const override { dst[name_] = *ref_; }
     inline std::string value_type_str() const override { return "string"; }
-    inline std::string default_value_str() const override { return std::string(*ref_); }
+    inline std::string default_value_str() const override { return std::string(default_value_); }
 };
 
 }

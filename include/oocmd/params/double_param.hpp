@@ -16,7 +16,7 @@ public:
 
     inline std::string default_value_str() const override {
         std::ostringstream s;
-        s << std::fixed << std::setprecision(2) << *ref_;
+        s << std::fixed << std::setprecision(2) << default_value_;
         return s.str();
     }
 };
