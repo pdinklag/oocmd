@@ -70,6 +70,35 @@ private:
 
 public:
     /**
+     * \brief Parses the command line and runs the specified config object
+     * 
+     * This method is meant to be called by a \c main method.
+     * It is equivalent to creating an \ref Application instance with a command line and a config object,
+     * testing whether the command line was successfully parsed and then running the actual program.
+     * 
+     * The config object is expected to have a function called \c run that accepts a reference to the application as a parameter
+     * and returns an integer return code.
+     * 
+     * \tparam T the runnable config object type
+     * \param x the runnable config object
+     * \param argc the number of command-line arguments
+     * \param argv the command line arguments
+     * \return the return code
+     */
+    template<DerivedFromConfigObject T>
+    requires requires(T x, Application const& app) {
+        { x.run(app) } -> std::convertible_to<int>;
+    }
+    inline static int run(T& x, int argc, char** argv) {
+        Application app(x, argc, argv);
+        if(app) {
+            return x.run(app);
+        } else {
+            return -1;
+        }
+    }
+
+    /**
      * \brief Attempts to parse the given command line and configure the given object
      * 
      * This method is typically called by a \c main method.
