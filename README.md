@@ -1,3 +1,5 @@
+> :warning: This library is no longer maintained. Please use [pdinklag/cmdline](https://github.com/pdinklag/cmdline), which also has a proper license.
+
 # oocmd &ndash; Object-Oriented Command Line Parser for C++
 
 This library provides an object-oriented command line parser for the entry point of your C++20 application.
